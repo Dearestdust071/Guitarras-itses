@@ -8,18 +8,13 @@ function App() {
   const nuevoData = { id: 1, name: 'Lukather', image: 'guitarra_01', description: 'Morbi222 ornare augue nisl, vel elementum dui moll…el. Curabitur non ex id eros fermentum hendrerit.', price: 299 }
   
   const [data, setData] = useState(db);
-  const [cart, setCart] = useState([nuevoData]);
+  const [cart, setCart] = useState([]);
 
 
   // const nuevaDB = [...db,nuevoData]
 
-
   // Si haces esto genera demasiados renders porque primero se cera y se llama o algo asi
   // setData(nuevaDB)
-
-
-  // No entiendo bien esto: 
-  // [...data, nuevoData]
 
 
   return (
