@@ -1,13 +1,10 @@
 // Basicos: useEffect, 
 import { useMemo } from "react";
-function Header({ cart, setCart }) {
+function Header({ cart, setCart, setPermStorage }) {
 
   const isEmpty = useMemo(() => cart.length === 0, [cart])
   const totalPrice = useMemo(() => (cart.reduce((acumulator, guitar) => acumulator + (guitar.price * guitar.quantity), 0)), [cart])
 
-
-
- 
 
   function removeGuitar(id){
         const index = cart.findIndex((guitar => guitar.id === id));
@@ -16,6 +13,7 @@ function Header({ cart, setCart }) {
         guitarInCart.quantity -= 1;
         cart[index] = guitarInCart;
         setCart([...cart])
+        setPermStorage();
     }
 
 
@@ -31,6 +29,7 @@ function Header({ cart, setCart }) {
       guitarInCart.quantity += 1;
       cart[index] = guitarInCart;
       setCart([...cart])
+      setPermStorage();
   }
 
   // function addGuitar(id) {
@@ -64,6 +63,7 @@ function Header({ cart, setCart }) {
 
   function clearCart(){
     setCart( [] )
+    setPermStorage();
   }
 
 

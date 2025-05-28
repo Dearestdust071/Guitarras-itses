@@ -6,9 +6,19 @@ import { useState } from 'react'
 
 function App() {
   const nuevoData = { id: 1, name: 'Lukather', image: 'guitarra_01', description: 'Morbi222 ornare augue nisl, vel elementum dui moll…el. Curabitur non ex id eros fermentum hendrerit.', price: 299 }
-  
+
   const [data, setData] = useState(db);
   const [cart, setCart] = useState([]);
+
+  function setPermStorage() {
+    localStorage.setItem("cart", JSON.stringify(cart))
+
+  }
+
+
+  setPermStorage();
+
+  // Mandarle unicamente al cart al localStorage (como array)
 
 
   // const nuevaDB = [...db,nuevoData]
@@ -21,8 +31,10 @@ function App() {
 
     <>
       <Header
-        cart ={cart}
-        setCart = {setCart}
+        key={cart.id}
+        cart={cart}
+        setCart={setCart}
+        setPermStorage={setPermStorage}
       />
 
 
@@ -38,8 +50,9 @@ function App() {
                 // Al pasar props debemos de pasar una key que es su id
                 key={guitar.id}
                 guitar={guitar}
-                cart = {cart}
-                setCart = {setCart}
+                cart={cart}
+                setCart={setCart}
+                setPermStorage={setPermStorage}
               />
             )
           )}

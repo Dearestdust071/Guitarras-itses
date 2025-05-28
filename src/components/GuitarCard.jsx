@@ -1,13 +1,15 @@
 import { useState } from "react"
 
 
-function GuitarCard({guitar, setCart, cart}){
+function GuitarCard({guitar, setCart, cart, setPermStorage}){
     // console.log(`Desde guitarCard = ${guitar}`);
 
     const {id, name, image, description, price} = guitar;
     // quantity:1 no existe dentro del carrito agrega solo 1 de valor
     // En caso de que exista aumentara quantity en 1 
     // const {cart} = cart;
+
+
 
 
     function addGuitar(){
@@ -34,7 +36,8 @@ function GuitarCard({guitar, setCart, cart}){
         quantity: 1,
     }
     setCart([...cart, Guitar])
-        }
+    setPermStorage();        
+}
         console.log(cart)
     }
 
